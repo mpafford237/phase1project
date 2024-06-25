@@ -10,19 +10,41 @@ addEventListener("DOMContentLoaded", () => {
         universitiesList = data
         console.log(universitiesList)
         initializeApp()
-    }
-)
-.catch(error => console.log(error))
+    })
+    .catch(error => console.log(error))
 })
 
 //function list
 function initializeApp(){
-    document.getElementById("searchBar").addEventListener("input", handleSearchInput)
+    document.getElementById("nameSearchBar").addEventListener("input", searchAndFilterUniversities)
+    document.getElementById("countrySearchBar").addEventListener("input", searchAndFilterUniversities)
+    document.getElementById("showFavorites").addEventListener("change", searchAndFilterUniversities)
 }
 
-function handleSearchInput(event){
-    const countrySearch = event.target.value;
-    const filteredUniversities = universitiesList.filter(university => university.country.toLowerCase() === countrySearch.toLowerCase());
+// Unified search and filter function
+function searchAndFilterUniversities() {
+    let filteredUniversities = universitiesList;
+
+    // Get values from input fields
+    const nameSearchValue = document.getElementById("nameSearchBar").value.toLowerCase();
+    const countrySearchValue = document.getElementById("countrySearchBar").value.toLowerCase();
+
+    // Filter by name if nameSearchValue is not empty
+    if (nameSearchValue) {
+        filteredUniversities = filteredUniversities.filter(university => university.name.toLowerCase().includes(nameSearchValue));
+    }
+
+    // Filter by country if countrySearchValue is not empty
+    if (countrySearchValue) {
+        filteredUniversities = filteredUniversities.filter(university => university.country.toLowerCase() === countrySearchValue);
+    }
+
+    // Further filter by favorites if "showFavorites" is checked
+    if (document.getElementById("showFavorites").checked) {
+        filteredUniversities = filteredUniversities.filter(university => favoriteUniversities.includes(university.name));
+    }
+
+    // Display the filtered list
     displayUniversities(filteredUniversities);
 }
 
@@ -48,24 +70,9 @@ function toggleFavorite(universityName, buttonElement){
     }
 }
 
-document.getElementById("universityList").addEventListener("click", function(event){
+document.getElementById("universityList").addEventListener("click", (event) => {
     if(event.target.tagName === 'BUTTON'){
         const universityName = event.target.getAttribute('data-university-name');
         toggleFavorite(universityName, event.target);
     }
 });
-
-document.getElementById("showFavorites").addEventListener("change", function(event) {
-    if(event.target.checked) {
-        const favoriteUniversitiesFiltered = universitiesList.filter(university => favoriteUniversities.includes(university.name));
-        displayUniversities(favoriteUniversitiesFiltered);
-    } else {
-        const searchBarValue = document.getElementById("searchBar").value;
-        if(searchBarValue) {
-            handleSearchInput({target: {value: searchBarValue}});
-        } else {
-            displayUniversities(universitiesList);
-        }
-    }
-});
-//buttons and search functions

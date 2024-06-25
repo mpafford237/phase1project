@@ -1,0 +1,53 @@
+/* Base styles for your project */
+body {
+    background-color: #f5f5dc; /* Slightly off white (cream) background */
+    color: #228b22; /* Forest green text */
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Simple but elegant font */
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #006400; /* Darker shade of forest green for headings */
+}
+
+a {
+    color: #228b22; /* Forest green links */
+    text-decoration: none; /* Removes underline from links */
+}
+
+a:hover {
+    text-decoration: underline; /* Adds underline on hover for better accessibility */
+}
+
+/* Container for content to center it and give some padding */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 0 20px;
+}
+
+/* Card styles for displaying content */
+.card {
+    background-color: #ffffff; /* White background for contrast */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Simple shadow for depth */
+    margin-bottom: 20px;
+    padding: 20px;
+    border-radius: 8px; /* Slightly rounded corners for a soft look */
+}
+
+/* Button styles */
+.button {
+    background-color: #228b22; /* Forest green background */
+    color: #ffffff; /* White text */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+.button:hover {
+    background-color: #006400; /* Darker shade of forest green on hover */
+}

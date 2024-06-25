@@ -10,3 +10,6 @@ Simply type the name of the University you are looking for into the search bar, 
 
 This Web app uses the JSON file containing the HIPO University Domains List. The link to their github repository is here: https://github.com/Hipo/university-domains-list/blob/master/world_universities_and_domains.json.
 
+## Blog Link
+
+Here is a link to my Hashnode blog where I detail how my JS code and WebApp works: https://mpcodingjourney.hashnode.dev/baby-steps-making-the-university-finder-web-app. 
